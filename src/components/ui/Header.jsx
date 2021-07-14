@@ -1,4 +1,9 @@
-import { AppBar, Toolbar, useScrollTrigger } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  useScrollTrigger,
+} from "@material-ui/core";
 import React from "react";
 
 function ElevationScroll({ children }) {
@@ -16,7 +21,11 @@ function Header() {
   return (
     <ElevationScroll>
       <AppBar position="fixed" color="primary">
-        <Toolbar>asd1</Toolbar>
+        <Toolbar>
+          <Typography variant="h3" color="secondary">
+            App Development
+          </Typography>
+        </Toolbar>
       </AppBar>
     </ElevationScroll>
   );

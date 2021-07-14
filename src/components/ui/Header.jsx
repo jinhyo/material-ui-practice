@@ -1,5 +1,6 @@
 import {
   AppBar,
+  makeStyles,
   Toolbar,
   Typography,
   useScrollTrigger,
@@ -17,17 +18,29 @@ function ElevationScroll({ children }) {
   });
 }
 
+const useStyles = makeStyles((theme) => ({
+  toolBarMargin: {
+    ...theme.mixins.toolbar,
+  },
+}));
+
 function Header() {
+  const classes = useStyles();
+
   return (
-    <ElevationScroll>
-      <AppBar position="fixed" color="primary">
-        <Toolbar>
-          <Typography variant="h3" color="secondary">
-            App Development
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </ElevationScroll>
+    <>
+      <ElevationScroll>
+        <AppBar position="fixed" color="primary">
+          <Toolbar>
+            <Typography variant="h3" color="secondary">
+              App Development
+            </Typography>
+          </Toolbar>
+        </AppBar>
+      </ElevationScroll>
+      <div className={classes.toolBarMargin} />
+      {/*  AppBar 아래에 margin 추가 */}
+    </>
   );
 }
 

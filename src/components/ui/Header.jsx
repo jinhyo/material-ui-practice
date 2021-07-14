@@ -6,6 +6,7 @@ import {
   useScrollTrigger,
 } from "@material-ui/core";
 import React from "react";
+import logo from "../../assets/logo.svg";
 
 function ElevationScroll({ children }) {
   const trigger = useScrollTrigger({
@@ -21,6 +22,10 @@ function ElevationScroll({ children }) {
 const useStyles = makeStyles((theme) => ({
   toolBarMargin: {
     ...theme.mixins.toolbar,
+    marginBottom: "3em",
+  },
+  logo: {
+    height: "7em",
   },
 }));
 
@@ -31,10 +36,11 @@ function Header() {
     <>
       <ElevationScroll>
         <AppBar position="fixed" color="primary">
-          <Toolbar>
-            <Typography variant="h3" color="secondary">
+          <Toolbar disableGutters>
+            {/* <Typography variant="h3" color="secondary">
               App Development
-            </Typography>
+            </Typography> */}
+            <img src={logo} className={classes.logo} alt="company logo" />
           </Toolbar>
         </AppBar>
       </ElevationScroll>

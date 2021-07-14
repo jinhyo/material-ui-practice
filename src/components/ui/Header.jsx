@@ -15,7 +15,7 @@ function ElevationScroll({ children }) {
 function Header() {
   return (
     <ElevationScroll>
-      <AppBar position="fixed">
+      <AppBar position="fixed" color="primary">
         <Toolbar>asd1</Toolbar>
       </AppBar>
     </ElevationScroll>

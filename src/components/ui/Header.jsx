@@ -33,6 +33,14 @@ const useStyles = makeStyles((theme) => ({
   tabContainer: {
     marginLeft: "auto",
   },
+  tab: {
+    fontFamily: "Raleway",
+    textTransform: "none",
+    fontWeight: 700,
+    fontSize: "1rem",
+    minWidth: 10,
+    marginlef: "25px",
+  },
 }));
 
 function Header() {
@@ -59,11 +67,11 @@ function Header() {
               className={classes.tabContainer}
               // aria-label="simple tabs example"
             >
-              <Tab label="Home" />
-              <Tab label="Services" />
-              <Tab label="The Revolution" />
-              <Tab label="About us" />
-              <Tab label="Contact us" />
+              <Tab className={classes.tab} label="Home" />
+              <Tab className={classes.tab} label="Services" />
+              <Tab className={classes.tab} label="The Revolution" />
+              <Tab className={classes.tab} label="About us" />
+              <Tab className={classes.tab} label="Contact us" />
             </Tabs>
           </Toolbar>
         </AppBar>

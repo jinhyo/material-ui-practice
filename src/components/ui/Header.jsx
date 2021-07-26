@@ -1,11 +1,14 @@
 import {
   AppBar,
   makeStyles,
+  Tab,
+  Tabs,
   Toolbar,
   Typography,
   useScrollTrigger,
 } from "@material-ui/core";
 import React from "react";
+import { useState } from "react";
 import logo from "../../assets/logo.svg";
 
 function ElevationScroll({ children }) {
@@ -27,10 +30,19 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     height: "7em",
   },
+  tabContainer: {
+    marginLeft: "auto",
+  },
 }));
 
 function Header() {
   const classes = useStyles();
+  const [value, setValue] = useState(0);
+  console.log("🚀 ~ file: Header.jsx ~ line 38 ~ Header ~ value", value);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
     <>
@@ -41,6 +53,18 @@ function Header() {
               App Development
             </Typography> */}
             <img src={logo} className={classes.logo} alt="company logo" />
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              className={classes.tabContainer}
+              // aria-label="simple tabs example"
+            >
+              <Tab label="Home" />
+              <Tab label="Services" />
+              <Tab label="The Revolution" />
+              <Tab label="About us" />
+              <Tab label="Contact us" />
+            </Tabs>
           </Toolbar>
         </AppBar>
       </ElevationScroll>

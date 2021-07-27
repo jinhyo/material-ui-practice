@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Button,
   makeStyles,
   Tab,
   Tabs,
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "3em",
   },
   logo: {
-    height: "7em",
+    height: "5em",
   },
   tabContainer: {
     marginLeft: "auto",
@@ -37,6 +38,13 @@ const useStyles = makeStyles((theme) => ({
     ...theme.typography.tab,
     minWidth: 10,
     marginlef: "25px",
+  },
+  button: {
+    ...theme.typography.estimate,
+    borderRadius: "50px",
+    marginLeft: "50px",
+    marginRight: "25px",
+    height: "35px",
   },
 }));
 
@@ -52,7 +60,7 @@ function Header() {
   return (
     <>
       <ElevationScroll>
-        <AppBar position="fixed" color="primary">
+        <AppBar position="fixed">
           <Toolbar disableGutters>
             {/* <Typography variant="h3" color="secondary">
               App Development
@@ -70,6 +78,13 @@ function Header() {
               <Tab className={classes.tab} label="About us" />
               <Tab className={classes.tab} label="Contact us" />
             </Tabs>
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+            >
+              FREE ESTIMATE
+            </Button>
           </Toolbar>
         </AppBar>
       </ElevationScroll>

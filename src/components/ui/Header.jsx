@@ -8,8 +8,9 @@ import {
   Typography,
   useScrollTrigger,
 } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 
 function ElevationScroll({ children }) {
@@ -46,9 +47,16 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "25px",
     height: "35px",
   },
+  logoContainer: {
+    padding: 0,
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+  },
 }));
 
 function Header() {
+  const location = useLocation();
   const classes = useStyles();
   const [value, setValue] = useState(0);
   console.log("🚀 ~ file: Header.jsx ~ line 38 ~ Header ~ value", value);
@@ -56,6 +64,20 @@ function Header() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+    if (location.pathname === "/" && value !== 0) {
+      setValue(0);
+    } else if (location.pathname === "/services" && value !== 1) {
+      setValue(1);
+    } else if (location.pathname === "/revolution" && value !== 2) {
+      setValue(2);
+    } else if (location.pathname === "/about" && value !== 3) {
+      setValue(3);
+    } else if (location.pathname === "/contact" && value !== 4) {
+      setValue(4);
+    }
+  }, [value]);
 
   return (
     <>
@@ -65,18 +87,51 @@ function Header() {
             {/* <Typography variant="h3" color="secondary">
               App Development
             </Typography> */}
-            <img src={logo} className={classes.logo} alt="company logo" />
+            <Button
+              component={Link}
+              to="/"
+              className={classes.logoContainer}
+              disableRipple
+              onClick={() => setValue(0)}
+            >
+              <img src={logo} className={classes.logo} alt="company logo" />
+            </Button>
             <Tabs
               value={value}
               onChange={handleChange}
               className={classes.tabContainer}
-              // aria-label="simple tabs example"
+              indicatorColor="secondary"
             >
-              <Tab className={classes.tab} label="Home" />
-              <Tab className={classes.tab} label="Services" />
-              <Tab className={classes.tab} label="The Revolution" />
-              <Tab className={classes.tab} label="About us" />
-              <Tab className={classes.tab} label="Contact us" />
+              <Tab
+                className={classes.tab}
+                component={Link}
+                to="/"
+                label="Home"
+              />
+              <Tab
+                className={classes.tab}
+                component={Link}
+                to="/services"
+                label="Services"
+              />
+              <Tab
+                className={classes.tab}
+                component={Link}
+                to="/revolution"
+                label="The Revolution"
+              />
+              <Tab
+                className={classes.tab}
+                component={Link}
+                to="/about"
+                label="About us"
+              />
+              <Tab
+                className={classes.tab}
+                component={Link}
+                to="/contact"
+                label="Contact us"
+              />
             </Tabs>
             <Button
               variant="contained"
